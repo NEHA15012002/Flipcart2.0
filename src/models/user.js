@@ -47,8 +47,11 @@ const userSchema = new mongoose.Schema({
     profilePicture: {type: String}
 },{timestamps: true}
 );
-
-
+ 
+userSchema.virtual('fullName')
+.get(function(){
+   return `${this.firstName} ${this.lastName}`;
+});
 
   
   userSchema.virtual('password')
